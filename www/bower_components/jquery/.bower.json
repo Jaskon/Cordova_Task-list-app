@@ -1,0 +1,19 @@
+{
+  "name": "jquery",
+  "main": "dist/jquery.js",
+  "license": "MIT",
+  "ignore": [
+    "package.json"
+  ],
+  "keywords": [
+    "jquery",
+    "javascript",
+    "browser",
+    "library"
+  ],
+  "_source": "nexus+https://gml-jbpm.gomel.iba.by/nexus/repository/bower-all/jquery",
+  "_target": "2.2.x",
+  "_release": "2.2.4",
+  "version": "2.2.4",
+  "_originalSource": "jquery"
+}

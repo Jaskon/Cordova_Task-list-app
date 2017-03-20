@@ -1,0 +1,10 @@
+{
+   "registry" : {
+    "search" : [ "https://gml-jbpm.gomel.iba.by/nexus/repository/bower-all/" ]
+   },
+  "resolvers" : [ "bower-nexus3-resolver" ],
+  "strict-ssl": false,
+  "directory": "../www/bower_components",
+  "interactive": false
+}
+

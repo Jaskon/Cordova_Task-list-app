@@ -1,0 +1,31 @@
+<!-- Date panel (top) -->
+<div class="date-div">
+    <span class="date-week">{{date | date:'EEEE'}}</span> | 
+    <span class="date-date">{{date | date:'dd.MM.yyyy'}}</span> | 
+    <span class="date-time">{{date | date:'HH:mm:ss'}}</span>
+</div>
+
+<!-- Current tasks panel (below the time) -->
+<div class="main-page-tasks-container">
+    <h1> Your current tasks
+    <br>
+    <span style="font-size: 24px">
+        (you have {{tasks | elemInObjsEqualsToCount: 'completed':false}} uncompleted at all)
+    </span>
+    </h1>
+
+    <div class="main-page-tasks">
+        <div ng-repeat="task in tasks | objsVariableEqualsTo:'completed':false | orderBy:'severity'" class="main-page-task">
+            <span ng-class="{
+                    'main-page-task-sev1': task.severity === 1,
+                    'main-page-task-sev2': task.severity === 2,
+                    'main-page-task-sev3': task.severity === 3,
+                    'main-page-task-sev4': task.severity === 4
+            }">{{task.text}} <span ng-if="task.completed">(completed)</span></span>
+        </div>
+    </div>
+
+    <br>
+    <!-- Redirect button (to '/tasklist' page) -->
+    <a href="#!/tasklist" id="btnManageTasks" class="btn btn-success">Manage tasks</a>
+</div>

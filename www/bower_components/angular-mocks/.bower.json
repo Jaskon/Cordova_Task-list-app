@@ -1,0 +1,14 @@
+{
+  "name": "angular-mocks",
+  "version": "v1.5.11",
+  "license": "MIT",
+  "main": "./angular-mocks.js",
+  "ignore": [],
+  "dependencies": {
+    "angular": "1.5.11"
+  },
+  "_source": "nexus+https://gml-jbpm.gomel.iba.by/nexus/repository/bower-all/angular-mocks",
+  "_target": "1.5.x",
+  "_release": "v1.5.11",
+  "_originalSource": "angular-mocks"
+}

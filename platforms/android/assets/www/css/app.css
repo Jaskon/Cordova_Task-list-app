@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+table th,
+table td {
+    vertical-align: middle !important;
+}
+
+
+/* index.html */
+/* "margin" around the list of menu items */
+.navbar-container {
+    box-sizing: border-box;
+    display: table;
+    margin: auto;
+}
+/* Container below the header */
+.body-container {
+    box-sizing: border-box;
+    margin: 0 auto 10px auto;
+    padding: 0 10px;
+    width: 100%;
+}
+/* ui-router view container */
+.view-container {
+    box-sizing: border-box;
+    margin: 0 auto 10px auto;
+    width: 100%;
+}
+/* ui-router view div (itself) */
+.view-frame {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+/* Loading element (when $http is "active") */
+.loading-elem {
+    animation: loading-elem-blinking .8s infinite alternate;
+    display: none;
+}
+.loading-elem-show {
+    display: block;
+}
+@keyframes loading-elem-blinking {
+    0%   { color: black; }
+    100% { color: orange; }
+}
+
+.http-error {
+    color: red;
+    display: none;
+    font-size: 16px;
+    opacity: 0;
+    position: fixed;
+    right: 40px;
+    top: 60px;
+}
+.http-error-show {
+    animation: http-error-elem-blinking 3s;
+    display: block;
+}
+@keyframes http-error-elem-blinking {
+    0%   { opacity: 1; }
+    40%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* MainPage component */
+.main-page-tasks-container {
+    margin-top: 40px;
+}
+.main-page-tasks {
+    margin: 28px 0 14px 20px;
+}
+.main-page-task {
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 1.1;
+    margin: 10px 10px 4px 0;
+}
+/* Task color */
+.main-page-task-sev1 {
+    color: red;
+}
+.main-page-task-sev2 {
+    color: darkorange;
+}
+.main-page-task-sev3 {
+    color: #5bc0de;
+}
+.main-page-task-sev4 {
+    color: green;
+}
+/* Date and time at the right part of the page */
+.date-div {
+    margin: auto;
+}
+.date-week,
+.date-date,
+.date-time {
+    box-sizing: border-box;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+.date-week {
+    font-size: 24px;
+    margin-top: 0;
+}
+.date-date {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.date-time {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+/* TaskList component */
+/* Task adding form */
+.form-add-task {
+    margin: 20px auto 24px auto;
+    max-width: 250px;
+}
+/* Margin around all elements in this form */
+.form-add-task > * {
+    margin: 10px 0 0 0;
+}
+/* Effects when user interact with elements */
+.form-add-task select {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: white;
+}
+.form-add-task select:hover {
+    background-color: #286090;
+    border-color: #204d74;
+}
+.form-add-task select:active {
+    background-color: #204d74;
+    border-color: #122b40;
+}
+.form-add-task select option:checked {
+    background-color: #337ab7;
+    color: #fff;
+}
+.form-add-task select option:not(:checked) {
+    background-color: #fff;
+    color: #000;
+}
+/* Adding/editing form validation */
+.form-add-task .task-severity.ng-invalid {
+    border-color: red;
+}
+.form-add-task .task-text.ng-invalid {
+	border-color: red;
+}
+
+.table-task-list {
+    width: 100%;
+}
+
+.taskText {
+    word-break: break-word;
+}
+
+
+/* Additionals to bootstrap */
+.navbar-default .navbar-brand {
+    transition: .1s linear;
+}
+.navbar-default .navbar-brand.active {
+    border-bottom: 1px solid #5e5e5e;
+}
+
+.table {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+.table th,
+.table td {
+    text-align: center;
+}

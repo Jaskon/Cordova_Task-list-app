@@ -1,0 +1,72 @@
+<!-- Form for adding a new task -->
+<form class="form-inline form-add-task">
+    <!-- Severity -->
+    <select class="form-control task-severity" ng-model="taskToCreate.severity" ng-required="taskToCreateIsInvalid">
+        <option value="" selected disabled hidden>Choose severity</option>
+        <option ng-repeat="sev in [1,2,3,4]" value="{{sev}}">Severity {{sev}}</option>
+    </select>
+    <!-- Text -->
+    <input type="text" class="form-control task-text" ng-model="taskToCreate.text" placeholder="Enter task text here"
+            ng-required="taskToCreateIsInvalid">
+    <!-- Create button -->
+    <button class="form-control btn btn-success" id="btnCreateTask" ng-click="createTask()">Create task</button>
+</form>
+
+
+<!-- Table - list of tasks -->
+<table id="tasksTable" class="table table-striped table-hover table-tasks">
+    <caption></caption>
+    <thead>
+        <tr class="active">
+            <th id="taskSeverityTh">Severity</td>
+            <th id="taskTextTh">Task</td>
+            <th id="taskActionsTh">Actions</td>
+            <th id="taskCompletedTh">Completed</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="task in tasks | orderBy:'severity'" class="table-task-row">
+
+            <!-- Severity -->
+            <td class="col-xs-2">
+                <span ng-if="!task.editing">
+                    {{task.severity}}
+                </span>
+
+                <select ng-if="task.editing" class="form-control" ng-model="tempTask[task._id].severity">
+                    <option ng-repeat="sev in [1,2,3,4]" value="{{sev}}" ng-selected="sev == task.severity">
+                        {{sev}}</option>
+                </select>
+            </td>
+
+            <!-- Text -->
+            <td class="col-xs-5">
+                <span ng-if="!task.editing">
+                    <s ng-if="task.completed" class="taskText">{{task.text}}</s>
+                    <span ng-if="!task.completed" class="taskText">{{task.text}}</span>
+                </span>
+
+                <textarea ng-if="task.editing" ng-model="tempTask[task._id].text" class="form-control" rows="1" ng-keydown="ctrlEnter_SaveEditTask($event, task)"></textarea>
+            </td>
+
+            <!-- Buttons -->
+            <td class="col-xs-3">
+                <span ng-if="!task.editing">
+                    <button class="btn btn-info" ng-click="editTask(task)">Edit</button>
+                    <button class="btn btn-danger" ng-click="deleteTask(task)">Delete</button>
+                </span>
+
+                <span ng-if="task.editing">
+                    <button class="btn btn-primary" ng-click="saveEditTask(task)">Save</button>
+                    <button class="btn btn-default" ng-click="cancelEditTask(task)">Cancel</button>
+                </span>
+            </td>
+
+            <!-- Completed check -->
+            <td class="col-xs-2">
+                <input type="checkbox" ng-model="task.completed" ng-click="changeCompleteState(task)">
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" ng-app="taskListApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Task list</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/app.animations.css" />
+
+    <!-- Plug-ins -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+
+    <!-- Bootstrap's javascript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Angular sources -->
+    <script src="myFilters/isUnique.filter.js"></script>
+    <script src="myFilters/elemInObjsEqualsToCount.filter.js"></script>
+    <script src="myFilters/objsWithMinVariable.filter.js"></script>
+    <script src="myFilters/objsVariableEqualsTo.filter.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.js"></script>
+    <script src="app.config.js"></script>
+    <script src="tasksModel/tasksModel.factory.js"></script>
+    <script src="mainPageComponent/mainPage.module.js"></script>
+    <script src="mainPageComponent/mainPage.component.js"></script>
+    <script src="taskListComponent/taskList.module.js"></script>
+    <script src="taskListComponent/taskList.component.js"></script>
+</head>
+
+<body>
+
+<!-- Header (menu) -->
+<header ng-controller="headerController">
+    <nav class="navbar navbar-default">
+        <div class="navbar-container">
+            <a href="{{menu.link}}" ng-repeat="menu in menuList" class="navbar-brand" ng-class="{active: menu.active}">
+                {{menu.name}}
+            </a>
+            <!-- Update button on the right -->
+            <a class="navbar-brand navbar-right" style="cursor: pointer" ng-click="updateData()">Update data</a>
+        </div>
+    </nav>
+    <!-- Displays while waiting a response(s) from the server -->
+    <div class="navbar-brand navbar-right">
+        <div class="loading-elem" ng-class="{'loading-elem-show': loading}" data-loading>Waiting response...</div>
+    </div>
+    <div class="http-error" ng-class="{'http-error-show': responseError.state}">{{httpErrorText}}</div>
+</header>
+
+
+<!-- Body -->
+<div class="body-container">
+
+    <div class="view-container">
+        <!-- ui-router -->
+        <div ui-view class="view-frame"></div>
+    </div>
+
+</div>
+</body>
+
+</html>
